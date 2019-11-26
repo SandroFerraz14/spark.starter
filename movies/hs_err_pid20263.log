@@ -1,0 +1,112 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 131072 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2767), pid=20263, tid=0x00007f6684fce700
+#
+# JRE version: OpenJDK Runtime Environment (8.0_222-b10) (build 1.8.0_222-b10)
+# Java VM: OpenJDK 64-Bit Server VM (25.222-b10 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f6694180000):  JavaThread "dispatcher-event-loop-1" daemon [_thread_in_vm, id=20301, stack(0x00007f6684ece000,0x00007f6684fcf000)]
+
+Stack: [0x00007f6684ece000,0x00007f6684fcf000],  sp=0x00007f6684fca520,  free space=1009k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xacedcd]
+V  [libjvm.so+0x4f459a]
+V  [libjvm.so+0x8c6a08]
+V  [libjvm.so+0x8bdc1e]
+V  [libjvm.so+0xacba54]
+V  [libjvm.so+0x84f653]
+V  [libjvm.so+0x84f8ce]
+V  [libjvm.so+0x850ced]
+V  [libjvm.so+0x850ddb]
+V  [libjvm.so+0x8517be]
+V  [libjvm.so+0x8522f7]
+V  [libjvm.so+0x6357b4]
+V  [libjvm.so+0x45f840]
+V  [libjvm.so+0xa444b6]
+V  [libjvm.so+0x6c4648]
+V  [libjvm.so+0x6c636b]  JVM_DefineClassWithSource+0x9b
+C  [libjava.so+0xdfa5]  Java_java_lang_ClassLoader_defineClass1+0x165
+J 416  java.lang.ClassLoader.defineClass1(Ljava/lang/String;[BIILjava/security/ProtectionDomain;Ljava/lang/String;)Ljava/lang/Class; (0 bytes) @ 0x00007f669924508b [0x00007f6699244f80+0x10b]
+J 379 C1 java.lang.ClassLoader.defineClass(Ljava/lang/String;[BIILjava/security/ProtectionDomain;)Ljava/lang/Class; (43 bytes) @ 0x00007f66992308d4 [0x00007f6699230300+0x5d4]
+J 353 C1 java.net.URLClassLoader.defineClass(Ljava/lang/String;Lsun/misc/Resource;)Ljava/lang/Class; (142 bytes) @ 0x00007f669920cccc [0x00007f669920b180+0x1b4c]
+J 2743 C1 java.net.URLClassLoader$1.run()Ljava/lang/Class; (63 bytes) @ 0x00007f66996e8c4c [0x00007f66996e89a0+0x2ac]
+J 1889 C2 java.net.URLClassLoader$1.run()Ljava/lang/Object; (5 bytes) @ 0x00007f669952a4d4 [0x00007f669952a4a0+0x34]
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x680c5e]
+V  [libjvm.so+0x6d38bd]  JVM_DoPrivileged+0x58d
+J 109  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedExceptionAction;Ljava/security/AccessControlContext;)Ljava/lang/Object; (0 bytes) @ 0x00007f6699148895 [0x00007f66991487c0+0xd5]
+J 1450 C2 java.net.URLClassLoader.findClass(Ljava/lang/String;)Ljava/lang/Class; (47 bytes) @ 0x00007f66993ea9f0 [0x00007f66993ea960+0x90]
+J 2722 C2 java.lang.ClassLoader.loadClass(Ljava/lang/String;)Ljava/lang/Class; (7 bytes) @ 0x00007f66996e100c [0x00007f66996e04c0+0xb4c]
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x680c5e]
+V  [libjvm.so+0x67e024]
+V  [libjvm.so+0x67e6c5]
+V  [libjvm.so+0xa42448]
+V  [libjvm.so+0xa42d56]
+V  [libjvm.so+0xa43238]
+V  [libjvm.so+0x4e8455]
+V  [libjvm.so+0x4e91a6]
+V  [libjvm.so+0x7a0275]
+V  [libjvm.so+0x677b6b]
+j  org.apache.spark.HeartbeatReceiver$$anonfun$org$apache$spark$HeartbeatReceiver$$expireDeadHosts$3.apply(Lscala/Tuple2;)Ljava/lang/Object;+142
+j  org.apache.spark.HeartbeatReceiver$$anonfun$org$apache$spark$HeartbeatReceiver$$expireDeadHosts$3.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
+J 1971 C1 scala.collection.TraversableLike$WithFilter$$anonfun$foreach$1.apply(Ljava/lang/Object;)Ljava/lang/Object; (36 bytes) @ 0x00007f6699275d14 [0x00007f6699275c20+0xf4]
+j  scala.collection.mutable.HashMap$$anonfun$foreach$1.apply(Lscala/collection/mutable/DefaultEntry;)Ljava/lang/Object;+19
+j  scala.collection.mutable.HashMap$$anonfun$foreach$1.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
+j  scala.collection.mutable.HashTable$class.foreachEntry(Lscala/collection/mutable/HashTable;Lscala/Function1;)V+38
+J 2958 C1 scala.collection.mutable.HashMap.foreachEntry(Lscala/Function1;)V (6 bytes) @ 0x00007f66991c1124 [0x00007f66991c10c0+0x64]
+j  scala.collection.mutable.HashMap.foreach(Lscala/Function1;)V+10
+j  scala.collection.TraversableLike$WithFilter.foreach(Lscala/Function1;)V+13
+j  org.apache.spark.HeartbeatReceiver.org$apache$spark$HeartbeatReceiver$$expireDeadHosts()V+46
+j  org.apache.spark.HeartbeatReceiver$$anonfun$receiveAndReply$1.applyOrElse(Ljava/lang/Object;Lscala/Function1;)Ljava/lang/Object;+186
+j  org.apache.spark.rpc.netty.Inbox$$anonfun$process$1.apply$mcV$sp()V+65
+j  org.apache.spark.rpc.netty.Inbox.safelyCall(Lorg/apache/spark/rpc/RpcEndpoint;Lscala/Function0;)V+1
+j  org.apache.spark.rpc.netty.Inbox.process(Lorg/apache/spark/rpc/netty/Dispatcher;)V+85
+j  org.apache.spark.rpc.netty.Dispatcher$MessageLoop.run()V+139
+j  java.util.concurrent.ThreadPoolExecutor.runWorker(Ljava/util/concurrent/ThreadPoolExecutor$Worker;)V+95
+j  java.util.concurrent.ThreadPoolExecutor$Worker.run()V+5
+j  java.lang.Thread.run()V+11
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x680c5e]
+V  [libjvm.so+0x67e024]
+V  [libjvm.so+0x67e639]
+V  [libjvm.so+0x6c3d41]
+V  [libjvm.so+0xa77c22]
+V  [libjvm.so+0x8c3b12]
+C  [libpthread.so.0+0x7de5]  start_thread+0xc5
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+J 416  java.lang.ClassLoader.defineClass1(Ljava/lang/String;[BIILjava/security/ProtectionDomain;Ljava/lang/String;)Ljava/lang/Class; (0 bytes) @ 0x00007f6699245011 [0x00007f6699244f80+0x91]
+J 379 C1 java.lang.ClassLoader.defineClass(Ljava/lang/String;[BIILjava/security/ProtectionDomain;)Ljava/lang/Class; (43 bytes) @ 0x00007f66992308d4 [0x00007f6699230300+0x5d4]
+J 353 C1 java.net.URLClassLoader.defineClass(Ljava/lang/String;Lsun/misc/Resource;)Ljava/lang/Class; (142 bytes) @ 0x00007f669920cccc [0x00007f669920b180+0x1b4c]
+J 2743 C1 java.net.URLClassLoader$1.run()Ljava/lang/Class; (63 bytes) @ 0x00007f66996e8c4c [0x00007f66996e89a0+0x2ac]
+J 1889 C2 java.net.URLClassLoader$1.run()Ljava/lang/Object; (5 bytes) @ 0x00007f669952a4d4 [0x00007f669952a4a0+0x34]
+v  ~StubRoutines::call_stub
+J 109  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedExceptionAction;Ljava/security/AccessControlContext;)Ljava/lang/Object; (0 bytes) @ 0x00007f6699148823 [0x00007f66991487c0+0x63]
+J 1450 C2 java.net.URLClassLoader.findClass(Ljava/lang/String;)Ljava/lang/Class; (47 bytes) @ 0x00007f66993ea9f0 [0x00007f66993ea960+0x90]
+J 2722 C2 java.lang.ClassLoader.loadClass(Ljava/lang/String;)Ljava/lang/Class; (7 bytes) @ 0x00007f66996e100c [0x00007f66996e04c0+0xb4c]
+v  ~StubRoutines::call_stub
+j  org.apache.spark.HeartbeatReceiver$$anonfun$org$apache$spark$HeartbeatReceiver$$expireDeadHosts$3.apply(Lscala/Tuple2;)Ljava/lang/Object;+142
+j  org.apache.spark.HeartbeatReceiver$$anonfun$org$apache$spark$HeartbeatReceiver$$expireDeadHosts$3.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
